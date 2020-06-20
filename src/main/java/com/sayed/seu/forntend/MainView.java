@@ -9,7 +9,9 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasComponents;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
-import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.Anchor;
+import com.vaadin.flow.component.html.H4;
+import com.vaadin.flow.component.html.H6;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -34,7 +36,7 @@ import static com.sayed.seu.forntend.auth.ApplicationUserRole.CHAIRMAN;
 import static com.sayed.seu.forntend.auth.ApplicationUserRole.COORDINATOR;
 
 
-@Theme(value = Lumo.class, variant = Lumo.DARK)
+@Theme(value = Lumo.class, variant = Lumo.LIGHT)
 public class MainView extends AppLayout {
 
     private static String CURRENT_USER_ROLE;
@@ -56,14 +58,25 @@ public class MainView extends AppLayout {
     }
 
     private void createHeader() {
+        Anchor logout = new Anchor("logout", new H6("Log Out"));
+
         InputStream resourceAsStream = getClass().getResourceAsStream("/seu.png");
         StreamResource streamResource = new StreamResource("seu.png", (InputStreamFactory) () -> resourceAsStream);
         Image logo = new Image(streamResource, "");
         logo.setHeight("50px");
-        H3 title = new H3("Southeast University");
-        HorizontalLayout header = new HorizontalLayout(new DrawerToggle(),logo, title);
+
+        H4 title = new H4("Southeast University");
+
+        HorizontalLayout titleLayout = new HorizontalLayout(logo, title);
+        titleLayout.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
+
+        HorizontalLayout header = new HorizontalLayout(new DrawerToggle(), titleLayout, logout);
+        header.expand(titleLayout);
+        header.setMargin(true);
         header.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
+        header.setJustifyContentMode(FlexComponent.JustifyContentMode.BETWEEN);
         header.addClassName("header");
+        header.setWidth("100%");
         addToNavbar(header);
     }
 

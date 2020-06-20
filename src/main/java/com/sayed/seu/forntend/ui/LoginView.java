@@ -31,7 +31,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
         StreamResource streamResource = new StreamResource("seu.png", (InputStreamFactory) () -> resourceAsStream);
         Image logo = new Image(streamResource, "");
         logo.setHeight("128px");
-        add(logo,login);
+        add(logo, login);
     }
 
     @Override
