@@ -10,6 +10,7 @@ import com.vaadin.flow.component.HasComponents;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.tabs.Tab;
@@ -17,11 +18,14 @@ import com.vaadin.flow.component.tabs.TabVariant;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.RouteConfiguration;
 import com.vaadin.flow.router.RouterLink;
+import com.vaadin.flow.server.InputStreamFactory;
+import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.lumo.Lumo;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -52,12 +56,12 @@ public class MainView extends AppLayout {
     }
 
     private void createHeader() {
-//        InputStream resourceAsStream = getClass().getResourceAsStream("/seu.png");
-//        StreamResource streamResource = new StreamResource("seu.png", (InputStreamFactory) () -> resourceAsStream);
-//        Image logo = new Image(streamResource, "");
-//        logo.setHeight("50px");
+        InputStream resourceAsStream = getClass().getResourceAsStream("/seu.png");
+        StreamResource streamResource = new StreamResource("seu.png", (InputStreamFactory) () -> resourceAsStream);
+        Image logo = new Image(streamResource, "");
+        logo.setHeight("50px");
         H3 title = new H3("Southeast University");
-        HorizontalLayout header = new HorizontalLayout(new DrawerToggle(), title);
+        HorizontalLayout header = new HorizontalLayout(new DrawerToggle(),logo, title);
         header.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
         header.addClassName("header");
         addToNavbar(header);
