@@ -102,5 +102,8 @@
     "webpack-merge": "4.2.2",
     "webpack-dev-server": "3.10.3"
   },
+  "scripts": {
+    "start": "node index.js"
+  }
 
 }
