@@ -1,9 +1,6 @@
 {
   "name": "no-name",
   "license": "UNLICENSED",
-  "engines": {
-    "node": "12.11.1"
-  },
   "vaadin": {
     "dependencies": {
       "@polymer/polymer": "3.2.0",
@@ -104,9 +101,5 @@
     "terser": "4.6.7",
     "webpack-merge": "4.2.2",
     "webpack-dev-server": "3.10.3"
-  },
-  "scripts": {
-    "start": "node index.js"
   }
-
 }
