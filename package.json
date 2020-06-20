@@ -1,6 +1,9 @@
 {
   "name": "no-name",
   "license": "UNLICENSED",
+  "engines": {
+    "node": "12.11.1"
+  },
   "vaadin": {
     "dependencies": {
       "@polymer/polymer": "3.2.0",
